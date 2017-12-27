@@ -9,7 +9,7 @@
     <url>http://maven.apache.org</url>
     <properties>
         <!-- springframe 版本控制 -->
-        <spring.version>4.3.4.RELEASE</spring.version>
+        <spring.version>4.3.2.RELEASE</spring.version>
     </properties>
     <dependencies>
         <!-- springframe start -->
@@ -70,7 +70,15 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-redis</artifactId>
-            <version>2.0.2.RELEASE</version>
+            <version>1.7.11.RELEASE</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/junit/junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>
