@@ -54,11 +54,14 @@
 
     <!-- 开启annotation 事务 -->
     <tx:annotation-driven proxy-target-class="true"/>
+
+
     <!-- MyBatis 动态扫描  加载Mapper/Dao 接口 -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         <property name="basePackage" value="com.jmper.mybatis.dao"/>
     </bean>
+
     <!-- 声明式事务  属性配置 -->
     <tx:advice id="transactionAdvice">
         <tx:attributes>
@@ -83,11 +86,9 @@
             <tx:method name="*" read-only="true"/>
         </tx:attributes>
     </tx:advice>
-
     <!-- 配置切面 -->
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.jmper.mybatis.service.*.*(..))"/>
-        <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice"/>
+        <aop:advisor pointcut="execution(* com.jmper.mybatis.service.*.*(..))" advice-ref="transactionAdvice"/>
     </aop:config>
 
 </beans>

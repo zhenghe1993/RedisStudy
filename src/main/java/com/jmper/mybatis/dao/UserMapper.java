@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
  * @author 郑和明
  * @version 1.0 (createTime:2017-12-23 20:14:09)
  */
+@Repository
 public interface UserMapper {
     /**
      * 根据id 返回 用户类
