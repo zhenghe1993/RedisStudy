@@ -8,8 +8,8 @@
     <name>redis Maven Webapp</name>
     <url>http://maven.apache.org</url>
     <properties>
-        <!-- springframe 版本控制 -->
         <spring.version>4.3.2.RELEASE</spring.version>
+        <java.version>1.8</java.version>
     </properties>
     <dependencies>
         <!-- springframe start -->
@@ -60,6 +60,8 @@
         </dependency>
         <!-- springframe end -->
 
+
+
         <!-- https://mvnrepository.com/artifact/redis.clients/jedis -->
         <dependency>
             <groupId>redis.clients</groupId>
@@ -87,7 +89,6 @@
             <artifactId>mybatis</artifactId>
             <version>3.4.5</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring -->
         <dependency>
             <groupId>org.mybatis</groupId>
@@ -101,12 +102,19 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>6.0.6</version>
         </dependency>
-
         <!-- https://mvnrepository.com/artifact/com.alibaba/druid -->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>druid</artifactId>
             <version>1.1.6</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-core -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-core</artifactId>
+            <version>1.3.2</version>
         </dependency>
 
 
@@ -130,6 +138,7 @@
         </dependency>
 
 
+
         <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
@@ -139,8 +148,5 @@
         </dependency>
 
     </dependencies>
-    ​﻿​
-    <build>
-        <finalName>redis</finalName>
-    </build>
+
 </project>
