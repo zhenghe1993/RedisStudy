@@ -1,41 +1,31 @@
 package com.jmper.shiro;
 
-import com.jmper.exception.LoginException;
 import org.apache.shiro.authc.*;
-import org.apache.shiro.realm.Realm;
-import org.omg.CORBA.UnknownUserException;
+import org.apache.shiro.realm.AuthenticatingRealm;
 
 /**
  * @author 郑和明
  * @version 1.0 (createTime:2018-01-07 21:41:43)
  */
-public class MysqlRealm implements Realm {
+public class MysqlRealm extends AuthenticatingRealm {
 
 
     @Override
-    public String getName() {
-        return MysqlRealm.class.getSimpleName();
-    }
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        UsernamePasswordToken usernamePasswordToken = (UsernamePasswordToken) authenticationToken;
 
-    @Override
-    public boolean supports(AuthenticationToken authenticationToken) {
-        return authenticationToken instanceof UsernamePasswordToken;
-    }
+        String userName = usernamePasswordToken.getUsername();
 
-    @Override
-    public AuthenticationInfo getAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        System.out.println("用户名：" + userName);
 
-        String userName = (String) authenticationToken.getPrincipal();
-        String password = (String) authenticationToken.getCredentials();
 
-        if ("jmper".equals(userName)) {
-            throw new UnknownAccountException("此用户不存在");
+        if ("unknow".equals(userName)) {
+            throw new UnknownAccountException("用户不存在");
         }
 
-        if ("123456".equals(password)){
-            throw new IncorrectCredentialsException("密码错误");
-        }
-
-        return new SimpleAuthenticationInfo(userName,password,getName());
+        Object principle = userName;
+        Object credentials = "123456";
+        String realName = getName();
+        return new SimpleAuthenticationInfo(principle, credentials, realName);
     }
 }

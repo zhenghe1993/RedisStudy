@@ -12,5 +12,11 @@
 </head>
 <body>
 
+
+<form action="/jmper/shiro/login.do" method="post">
+    userNme: <input name="userName"> <br/><br/>
+    password: <input type="password" name="password"> <br/><br/>
+    <input type="submit" value="submit">
+</form>
 </body>
 </html>

@@ -27,7 +27,7 @@ public class ShiroConfig {
 
     public static void login(String userName, String password) throws AuthenticationException,LoginException {
         UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
-
+        token.setRememberMe(true);
         if (subject != null) {
             subject.login(token);
         } else {
