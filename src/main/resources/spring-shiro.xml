@@ -36,7 +36,14 @@
     <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
         <property name="cacheManagerConfigFile" value="classpath:ehcache.xml"/>
     </bean>
-    <bean id="sampleRealm" class="com.jmper.shiro.MysqlRealm"/>
+    <bean id="sampleRealm" class="com.jmper.shiro.MysqlRealm">
+        <property name="credentialsMatcher">
+            <bean class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+                <property name="hashAlgorithmName" value="MD5"/>
+                <property name="hashIterations" value="1024"/>
+            </bean>
+        </property>
+    </bean>
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
     <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"
