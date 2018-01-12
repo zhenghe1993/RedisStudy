@@ -21,13 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class LoginController {
 
-    @ResponseBody
     @RequestMapping(value = "/shiro/login.do", method = RequestMethod.POST)
     public String login(@RequestParam("userName") String userName,
                         @RequestParam("password") String password) {
 
-        System.out.println("userName = "+userName);
-        System.out.println("password = "+password);
         try {
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
@@ -40,7 +37,13 @@ public class LoginController {
         } catch (LockedAccountException e) {
             System.out.println("账户锁定");
         }
-        return "login";
+        return "redirect:../page/main.jsp";
     }
 
+    @RequestMapping(value = "/shiro/logout.do", method = RequestMethod.GET)
+    public String logout() {
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+        return "login";
+    }
 }

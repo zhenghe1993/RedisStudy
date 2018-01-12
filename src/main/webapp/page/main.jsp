@@ -1,3 +1,4 @@
+<%@ taglib prefix="shiro" uri="http://shiro.apache.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zhengheming
@@ -11,6 +12,17 @@
     <title>main</title>
 </head>
 <body>
+
+Welcome : <shiro:principal></shiro:principal><br/>
+<shiro:hasRole name="list">
+    <a href="../page/list.jsp">list</a><br/>
+</shiro:hasRole>
+<shiro:hasRole name="user">
+    <a href="../page/user.jsp">user</a><br/>
+</shiro:hasRole>
+
+<a href="../shiro/logout.do">logout</a>
+
 
 </body>
 </html>

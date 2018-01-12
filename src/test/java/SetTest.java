@@ -32,4 +32,6 @@ public class SetTest implements Root {
         User user = userMapper.selectOne(4);
         logger.info("----------user={}", user);
     }
+
+
 }
