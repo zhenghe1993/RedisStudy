@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class LoginController {
 
     @ResponseBody
-    @RequestMapping(value = "/shiro/login.do", method = RequestMethod.POST)
+    @RequestMapping(value = "/shiro/login.do",method = RequestMethod.POST)
     public String login(@RequestParam("userName") String userName,
                         @RequestParam("password") String password) {
 
-        System.out.println("userName = "+userName);
-        System.out.println("password = "+password);
+        System.out.println("userName = " + userName);
+        System.out.println("password = " + password);
         try {
             Subject subject = SecurityUtils.getSubject();
             UsernamePasswordToken token = new UsernamePasswordToken(userName, password);

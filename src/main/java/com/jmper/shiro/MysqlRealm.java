@@ -27,7 +27,7 @@ public class MysqlRealm extends AuthenticatingRealm {
         }
 
         Object principle = userName;
-        Object credentials = "fc1709d0a95a6be30bc5926fdb7f22f4";
+        Object credentials = "038bdaf98f2037b31f1e75b5b4c9b26e";
         String realName = getName();
         return new SimpleAuthenticationInfo(principle, credentials, ByteSource.Util.bytes(userName), realName);
     }

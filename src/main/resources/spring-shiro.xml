@@ -23,6 +23,7 @@
             <value>
                 /login.jsp = anon
                 /shiro/login.do = anon
+                /rest/**= anon
                 /** = authc
             </value>
         </property>
