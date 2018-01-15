@@ -16,6 +16,7 @@ public class FilterChainDefinitionMap {
         map.put("/login.jsp", "anon");
         map.put("/shiro/login.do", "anon");
         map.put("/shiro/logout.do", "logout");
+        map.put("/rest/**", "anon");
         map.put("/** ", "authc");
 
 

@@ -1,8 +1,11 @@
-package com.jmper.shiro;
+package com.jmper.mvc;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.InternalResourceView;
 
 /**
  * @author 郑和明
@@ -36,16 +39,15 @@ public class RestController {
         return "delete" + id;
     }
 
-    public Object body(@RequestParam String param, @RequestHeader String head, @RequestBody String name) {
 
-        return null;
-    }
-
-    public ModelAndView getView(){
-        ModelAndView modelAndView=new ModelAndView();
-
-        modelAndView.addObject("","");
-
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public ModelAndView test(@ModelAttribute("userName") String userName,
+                             @ModelAttribute("password") String password) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", userName);
+        modelAndView.addObject("password", password);
+        modelAndView.setStatus(HttpStatus.OK);
+        modelAndView.setViewName("success");
         return modelAndView;
     }
 }
