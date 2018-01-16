@@ -16,6 +16,7 @@
     </context:component-scan>
 
     <mvc:annotation-driven/>
+    <mvc:view-controller path="controller" view-name=""/>
 
     <!-- 静态资源配置 -->
     <mvc:resources mapping="/resources/**" location="/resources/" />

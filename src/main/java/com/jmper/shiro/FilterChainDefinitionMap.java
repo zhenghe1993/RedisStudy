@@ -19,7 +19,6 @@ public class FilterChainDefinitionMap {
         map.put("/rest/**", "anon");
         map.put("/** ", "authc");
 
-
         return map;
     }
 
