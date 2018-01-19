@@ -13,29 +13,33 @@ public class Provider {
 
     public static void main(String[] args) throws JMSException, InterruptedException {
         ConnectionFactory factory = new ActiveMQConnectionFactory(
-                ActiveMQConnectionFactory.DEFAULT_USER,
-                ActiveMQConnectionFactory.DEFAULT_PASSWORD,
+                "jmper",
+                "123456",
                 "tcp://localhost:61616"
         );
 
         Connection connection = factory.createConnection();
         connection.start();
 
-        //true/false 是否支持事务    签收模式
-        Session session = connection.createSession(Boolean.FALSE, Session.AUTO_ACKNOWLEDGE);
-
+        //true/false 是否支持事务 支持事务需要 commit    签收模式
+        Session session = connection.createSession(Boolean.TRUE, Session.CLIENT_ACKNOWLEDGE);
         Destination destination = session.createQueue("first");
         MessageProducer producer = session.createProducer(null);
+        producer.setDeliveryMode(DeliveryMode.PERSISTENT);
 
-
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 10; i++) {
 
             TextMessage message = session.createTextMessage("我是消息内容 - " + i);
+
+//             MapMessage message=session.createMapMessage();
+//             message.setString("","");
 
             producer.send(destination, message);
 
             TimeUnit.SECONDS.sleep(1);
         }
+
+        session.commit();
 
         if (connection != null) {
             connection.close();
