@@ -1,7 +1,5 @@
-package com.jmper.redis; /**
- * @author 郑和明
- * @version 1.0 (createTime:2017-12-26 22:29:03)
- */
+package com.jmper.redis;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.*;
@@ -9,6 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+/**
+ * @author 郑和明
+ * @version 1.0 (createTime:2017-12-26 22:29:03)
+ */
 @SuppressWarnings("unused")
 @Service
 public class RedisCacheUtil<K, V, T> {
